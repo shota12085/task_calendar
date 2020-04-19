@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: task_calendar_production
-  username: task_calendar
-  password: <%= ENV['TASK_CALENDAR_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
