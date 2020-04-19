@@ -1,0 +1,34 @@
+.account-page.account-page__edit
+  .account-page__inner
+    .account-page__header
+      %i.back-icon.fas.fa-times.fa-lg
+      %h2 Edit Account
+      %h5 アカウントの編集
+      -# = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'
+      -# = link_to "トップページに戻る", :back, class: 'btn'
+    .user-form
+      = form_for(current_user) do |f|
+        .field
+          .field-label
+            = f.label :name
+          .field-input
+            = f.text_field :name, autofocus: true
+          .field-label
+            = f.label :introduction
+          .field-input
+            = f.text_field :content, autofocus: true
+          .field-label
+            = f.label :image
+          .field-input
+            = f.file_field :imageicon
+          .field-label
+            = f.label :背景
+          .field-input
+            = f.file_field :image
+        .field
+          .field-label
+            = f.label :email
+          .field-input
+            = f.email_field :email
+        .actions
+          = f.submit "Update", class: 'btn'

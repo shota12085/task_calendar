@@ -1,0 +1,820 @@
+$pc: 1024px; // PC
+$tab: 680px; // タブレット
+$sp: 480px;  // スマホ
+
+@mixin pc {
+  @media (max-width: ($pc)) {
+    @content;
+  }
+}
+@mixin tab {
+  @media (max-width: ($tab)) {
+    @content;
+  }
+}
+@mixin sp {
+  @media (max-width: ($sp)) {
+    @content;
+  }
+}
+
+.notification {
+  .notice {
+    background-color: cornflowerblue;
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .alert {
+    background-color: #FA8072;
+    color: #ffffff;
+    text-align: center;
+  }
+}
+
+
+.top-window{
+  @include tab{
+    width: 100%;
+    height: 100%;
+  }
+  width: 100vw;
+  height: auto;
+  min-height: 100vh;
+  background-position: center;
+  position: relative;
+  background-size: cover;
+  background-color: #fff;
+  &__image{
+    @include pc{
+      height: 100%;
+    }
+    @include tab{
+      height: 720px;
+    }
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+  }
+  ul,li{
+    margin: 0;
+    padding: 0;
+  }
+  
+}
+.top-main{
+    @include tab{
+      width: 100%;
+      height: 100%;
+    }
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ddd;
+  &__introduction{
+    @include tab{
+      margin-bottom: 0;
+    }
+    margin-bottom: 100px;
+    text-align: center;
+    color: #ffffff;
+  }
+  &__access{
+    @include tab{
+      padding-top: 100px;
+    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+  }
+  &__signin{
+    background-color: #57B7B7;
+    outline: none;
+    font-family: 'ほのか明朝';
+    
+  }
+  &__login{
+    background-color: #57B7B7;
+    outline: none;
+    font-family: 'ほのか明朝';
+  }
+  &__sns{
+    width: 250px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  &__facebook{
+    width: 100%;
+    background-color: #305097 ;
+  }
+  &__twitter{
+    margin: 10px 0;
+    width: 100%;
+    background-color: #00aced;
+  }
+  &__instagram{
+    width: 100%;
+    background-color: #3f729b;
+  }
+  .inbtn{
+    width: 150px;
+    border-radius: 50px;
+    font-size: 20px;
+    padding: 20px;
+    margin: 0 20px;
+  }
+  .btn{
+    border-radius: 20px;
+    font-size: 16px;
+    text-align: left;
+    padding: 5px 20px;
+    display: flex;
+    align-items: center;
+    outline: none;
+  }
+  h1{
+    @include tab{
+      font-size: 28px;
+      margin: 100px 0 30px 0;
+      padding: 0;
+    }
+    font-family: 'ほのか明朝';
+    font-size: 40px;
+    font-weight: bold;
+    color: #ffffff;
+    
+  }
+  h2{
+    @include tab{
+      font-size: 20px;
+      margin: 0;
+      padding: 0 0 30px 0;
+    }
+    font-family: 'ほのか明朝';
+    font-size: 30px;
+    color: #ffffff;
+  }
+  p{
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+  .icon{
+    padding: 0 30px 0 0;
+  }
+}
+
+.account-page,.signin-page {
+  display: none;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    @include tab {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+    };
+    #account-page__edit{
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .account-page__inner-login {
+      @include tab{
+        width: 100%;
+        height: 100%;
+      }
+      width: 500px;
+      height: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #FFF5EE;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .account-page__inner {
+      @include tab {
+        width: 100%;
+        height: 100%;
+      };
+      width: 500px;
+      height: 650px;
+      margin: 50px 0 0 0;
+      padding: 20px;
+      background-color: #FFF5EE;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      
+    }
+    
+    .account-page__header {
+      h2 {
+      
+      font-size: 40px;
+      font-weight: 200;
+    }
+    
+    h5 {
+      font-size: 14px;
+      font-weight: 200;
+    }
+  }
+  
+  .field {
+    margin-bottom: 10px;
+    
+    .field-label {
+      padding: 10px 0;
+      letter-spacing: 1px;
+      font-size: 14px;
+      font-weight: 200;
+    }
+    
+    .field-input {
+      input {
+        width: 100%;
+        padding: 10px;
+        letter-spacing: 1px;
+      }
+    }
+    #user_image,#user_imageicon{
+      padding: 0;
+    }
+  }
+  .actions{
+    text-align: right;
+  }
+  .btn {
+    height: 50px;
+    padding: 0 30px;
+    line-height: 50px;
+    background-color: #FA8072;
+    text-align: center;
+    border: none;
+    border-radius: 2px;
+  }
+  .field-label {
+    .field_with_errors {
+      display: inline-block;
+      color: #d65f4c;
+      font-weight: 400;
+    }
+  }
+  
+  // .field-input {
+  //   .field_with_errors {
+  //     position: relative;
+      
+  //     &:after {
+  //       content: '';
+  //       display: block;
+  //       position: absolute;
+  //       top: 0;
+  //       right: 0;
+  //       bottom: 0;
+  //       width: 5px;
+  //       background-color: #d65f4c;
+  //     }
+  //   }
+  // }
+}
+
+#signin-page__device{
+  width: 980px;
+  margin: 30px auto;
+  .account-page__inner {
+    display: flex;
+    margin: 0 auto;
+    padding: 50px;
+    background-color: #FFF5EE;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    
+  }
+  
+  .account-page__header {
+    margin: 0 auto 0 30px;
+    h2 {
+    font-size: 40px;
+    font-weight: 200;
+  }  
+  h5 {
+    font-size: 14px;
+    font-weight: 200;
+  }
+}
+
+.field {
+  margin-bottom: 10px;  
+  .field-label {
+    padding: 10px 0;
+    letter-spacing: 1px;
+    font-size: 14px;
+    font-weight: 200;
+  }
+  
+  .field-input {
+    input {
+      width: 100%;
+      padding: 10px;
+      letter-spacing: 1px;
+    }
+  }
+  #user_image,#user_imageicon{
+    padding: 0;
+  }
+}
+.actions{
+  display: flex;
+  justify-content: space-between;
+  &__link{
+    text-decoration: none;
+    color: #444444;
+  }
+}
+.btn {
+  height: 50px;
+  padding: 0 30px;
+  line-height: 50px;
+  color: #444444;
+  background-color: #FA8072;
+  text-align: center;
+  border: none;
+  border-radius: 2px;
+}
+
+.field-label {
+  .field_with_errors {
+    display: inline-block;
+    color: #d65f4c;
+    font-weight: 400;
+  }
+}
+
+}
+
+
+
+
+#error_explanation {
+  margin: 20px 0;
+  padding: 20px 30px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+
+  h2 {
+    margin-bottom: 10px;
+    color: #d65f4c;
+    font-size: 14px;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 17px;
+    list-style: square;
+  }
+
+  li {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+  }
+}
+
+/*全体画面*/
+/*マイページ*/
+.wrapper{
+  @include tab {
+    display: block;
+  };
+  width: 100vw;
+  height: calc(100vh - 60px);
+  display: flex;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+  /*左画面*/
+  .group{
+    @include pc{
+      display: none;
+    }
+    @include tab {
+      display: none;
+      width: 100%;
+      height: 100%;
+    };
+    width: 400px;
+    border-right: 1px solid #ddd;
+    background-color: #F0F8FF;
+    text-align: center;
+    .group-top{
+      width: 100%;
+      height: 100%;
+      overflow: scroll;
+    }
+    .group-menu{
+      padding: 20px;
+      font-size: 24px;
+    }
+    .group-home{
+      margin: 10px; 
+    }
+    .group-userlist{
+      @include tab{
+        display: none;
+      }
+    }
+    .group-followlist{
+      @include tab{
+        display: none;
+      }
+    }
+    .group-list{
+      margin: 10px;
+      &__name{
+        display: none;
+        margin: 10px 30px;
+        padding: 10px;
+        list-style: none;
+        text-decoration: none;
+      }
+      &__name:hover{
+        opacity: 0.6;
+        background-color: #A4C6FF;
+        border-radius: 20px;
+      }
+    }
+    li{
+      cursor: pointer;
+      list-style: none;
+      font-size: 18px;
+      padding: 10px 0;
+      margin: 0 20px;
+    }
+    li:hover{
+      opacity: 0.6;
+      background-color: #A4C6FF;
+      border-radius: 20px; 
+    }
+    a{
+      text-decoration: none;
+      color: #444444;
+    }
+    .follow{
+      height: 200px;
+    }
+  }
+  /*マイページ中央*/
+  .user-main{
+    @include pc{
+      width: 60%;
+    }
+    @include tab {
+      width: 100%;
+      height: 100%;
+      margin-bottom: 20px;
+    };
+    width: calc(100vw - 800px);
+    height: auto;
+    .btn__tab{
+      @include tab {
+        display: block;
+        text-align: right;
+        padding: 5px 20px;
+      };
+      display: none;
+    }
+    .btn__tab3{
+      display: none;
+      @include pc {
+        display: block;
+        text-align: left;
+        padding: 5px 20px;
+      };
+      @include tab{
+        display: none;
+      }
+    }
+    .user-content{
+      height: 55%;
+      position: relative;
+      border-bottom: 1px solid #ddd;
+      &__image{
+        height: 60%;
+        background-color: #D9E5FF;
+      }
+      &__back-image{
+        
+        width: 100%;
+        height: 100%;
+      }
+      &__icon,&__icon-default{
+        width: 25%;
+        height: 35%;
+        position: absolute;
+        top: 50%;
+        left: 25%;
+        transform: translate(-50%, -50%);
+        
+      }
+      &__default-image{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 3px solid #ddd;
+      }
+      &__menu{
+        display: flex;
+        height: 15%;
+        align-items: center;
+        justify-content: space-between;
+      }
+      &__name{
+        font-weight: bold;
+        padding: 0 20px;
+        font-size: 24px;
+      }
+      &__edit{
+        cursor: pointer;
+        margin: 10px 20px 0 0;
+        padding: 10px 15px;
+        border: blue;
+        background-color: cornflowerblue;
+        border-radius: 20px;
+        color: #ffffff;
+        text-decoration: none;
+      }
+      &__edit:hover{
+        opacity: 0.6;
+      }
+      &__edit-back{
+        margin: 10px 20px 0 0;
+        padding: 10px 15px;
+
+      }
+      &__friend{
+        padding: 5px 20px;
+        font-size: 18px;
+      }
+      p{
+        margin: 0;
+        padding: 0;
+      }
+      &__greet{
+        height: 15%;
+        padding: 0 20px;
+      }
+    }
+    .user-show{
+      @include tab{
+        width: 100%;
+      }
+      display: none;
+      height: 40%;
+      font-size: 20px;
+      padding-top: 20px;
+      text-align: center;
+      overflow: scroll;
+      &__list{
+        margin: 10px 40px;
+      }
+      &__member{
+        display: flex;
+      }
+      &__member:hover{
+        opacity: 0.6;
+      }
+      &__imageicon{
+        width: 60px;
+        height: 60px;
+        margin-right: 20px;
+      }
+      &__name{
+        text-decoration: none;
+        color: #444444;
+        font-size: 20px;
+      }
+      &__created_at{
+        font-size: 12px;
+        text-align: left;
+      }
+    }
+    .event-tag{
+      height: 5%;
+      display: flex;
+      font-size: 16px;
+      
+      &__user{
+        width: 50%;
+        border-bottom: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        text-align: center;
+        padding-top: 5px;
+        background-color: #ddd;
+        cursor: pointer;
+      }
+      &__friend{
+        width: 50%;
+        border-bottom: 1px solid #ddd;
+        text-align: center;
+        padding-top: 7px;
+        cursor: pointer;
+      }
+      
+    }
+    .event-main{
+      height: 40%;
+      font-size: 20px;
+      overflow: scroll;
+      
+      .event-list{
+        // display: flex;
+        font-size: 16px;
+        margin: 20px 20px 0 20px;
+        padding: 10px;
+        border: 0.5px solid #ddd;
+        background-color: #ffffff;
+        box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
+        &__top{
+          display: flex;
+          justify-content: space-between;
+          padding: 10px;
+          margin: 10px 20px;
+          border: 1px solid #ddd;
+        }
+        &__start{
+          width: 40%;
+          font-size: 14px;
+          margin-right: 30px;
+          text-align: right;
+        }
+        &__title{
+          margin-top: 10px;
+          padding: 0 20px;
+
+        }
+        &__title:hover{
+          opacity: 0.6;
+        }
+        &__title--color{
+          color: #444444;
+          text-decoration: none;
+          font-size: 18px;
+        }
+        a{
+          color: #444444;
+        }
+    
+        }
+    }
+    .event-main__userless{
+      text-align: center;
+    }
+  } 
+  /*右画面*/
+  .all-user{
+    @include pc {
+      width: 40%;
+      text-align: center;
+    };
+    @include tab {
+      width: 100%;
+      height: 100%;
+    };
+    width: 400px;
+    background-color: #F0F8FF;
+    overflow: scroll;
+    &__show{
+      border-left: 1px solid #ddd;
+      padding: 20px 20px 0 20px;
+      display: flex;
+    }
+    &__main{
+      padding: 20px;
+      display: none;
+    }
+    &__tag--follower{
+      width: 50%;
+      text-align: center;
+      border: 1px solid #ddd;
+      background-color: #ddd;
+      height: 40px;
+      line-height: 40px;
+      cursor: pointer;
+    }
+    &__tag--follow{
+      width: 50%;
+      text-align: center;
+      border: 1px solid #ddd;
+      height: 40px;
+      line-height: 40px;
+      cursor: pointer;
+    }
+    &__follower-list{
+      margin: 5px 20px;
+      
+    }
+    &__follow-list{
+      display: none;
+      margin: 5px 20px;
+      
+    }
+    p{
+      margin: 0;
+      padding: 0;
+    }
+    &__list-member{
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      margin-bottom: 5px;
+      width: 100%;
+    }
+    &__image{
+      width: 50px;
+      height: 50px;
+      margin-right: 30px;
+      border-radius: 50%;
+    }
+    &__name{
+      text-decoration: none;
+      color: #444444;
+    }
+    &__name:hover{
+      opacity: 0.6;
+    }
+    &__list{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid #ddd;
+      background-color: #ffffff;
+      box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
+    }
+    &__follow{
+      border: none;
+      color: #444444;
+      outline: none;
+    }
+    .no-user{
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+      width: 100%;
+      text-align: center;
+    }
+    a{
+      text-decoration: none;
+      color: #444444;
+    }
+    h3{
+      font-size: 24px;
+      text-align: center;
+    }
+    /*検索機能*/
+    #user-search__input{
+      @include pc {
+        width: 300px;
+      };
+      @include tab{
+        width: 400px;
+      }
+      width: 300px;
+      height: 50px;
+      border-radius: 10px;
+      margin: 0 50px;
+      outline: none;
+      letter-spacing: 1px;
+    }
+    #user-search__result{
+      margin: 0 50px;
+    }
+  }
+  .follow-now{
+    background-color: cornflowerblue;
+    border: none;
+    color: #ffffff;
+    font-weight: bold;
+    outline: none;
+    padding: 5px;
+    border-radius: 20px;
+    width: 100px;
+  }
+  .follows{
+    background-color: #ffffff;
+    border: 2px solid cornflowerblue;
+    color: cornflowerblue;
+    font-weight: bold;
+    outline: none;
+    padding: 5px;
+    border-radius: 20px;
+    width: 100px;
+  }
+  
+}
+  

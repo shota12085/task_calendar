@@ -1,0 +1,5 @@
+.group-form
+  = link_to :back do
+    %i.back-icon.fas.fa-times.fa-lg
+  %h1 新規カレンダー作成
+  = render partial: 'form', locals: { group: @group }

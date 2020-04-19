@@ -1,0 +1,14 @@
+.field__path
+  %i.fas.fa-times.back-icon
+%h2 予定を編集してください
+= form_for [@group, @event] do |f|
+  = f.label :予定, class: "new-content__label"
+  = f.text_field :title, class: "new-content__text"
+  = f.label :内容, class: "new-content__label"
+  = f.text_field :content, class: "new-content__text"
+  %p 開始時間
+  = f.datetime_local_field :start_date
+  %p 終了時間
+  = f.datetime_local_field :end_date
+  .new-content__btn
+    = f.submit "update",class: "new-content__btnitem"

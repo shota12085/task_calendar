@@ -1,0 +1,41 @@
+.calendar-top
+  %i.fas.fa-bars.fa-lg.btn__tab2
+  #calendar
+    .new-content
+      = render "form"
+    .group-edit__content
+      = render "groups/edit" 
+    .member-list
+      %p Member List
+      - @group.users.each do |user|
+        .member-list__show
+          .member-list__image
+          =link_to user_path(user),class: "member-list__name-link" do
+            = image_tag user.imageicon,class:"member-list__image-icon"
+          .member-list__name
+          =link_to user_path(user),class: "member-list__name-link" do
+            = user.name
+      
+.time-content
+  .day-time
+    %i.day-time__icon.far.fa-calendar-plus.fa-2x
+    = @group.name + "の予定"
+    - @events.each do |event|
+      .day-time__contents{data: {event: {id: event.id}}}
+        .day-time__start
+          = event.start_date.to_s(:datetime_jp)+"~" 
+        .day-time__name
+          = link_to user_path(event.user.id),class: "day-time__username" do
+            = image_tag event.user.imageicon,class: "day-time__imageicon"
+            = event.user.name
+        .day-time__title
+          .day-time__shows
+            = link_to group_event_path(@group,event),class: "day-time__show" do
+              %i.fas.fa-link
+              =event.title
+          -if user_signed_in? && current_user.id == event.user.id
+            .day-time__deletes
+            = link_to group_event_path(@group,event),class: "show-content__delete", method: :delete, data: { confirm: '予定を削除してもよろしいでしょうか？' } do
+              %i.far.fa-trash-alt.show-content__d-icon 
+          
+            

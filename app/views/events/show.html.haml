@@ -1,0 +1,54 @@
+.show-main
+  .main-top{data: {event: {id: @event.id}}}
+    = link_to group_events_path(@group),class: "show-content__back" do
+      %i.fas.fa-home CalendarHome
+    .show-content
+      .show-content__title
+        予定
+        %br/
+        = @event.title
+      
+      -if user_signed_in? && current_user.id == @event.user.id
+        .show-content__menu
+          .show-content__edit
+            %i.far.fa-edit.fa-lg.show-content__e-icon 
+          = link_to group_event_path(@group,@event),class: "show-content__delete", method: :delete, data: { confirm: '予定を削除してもよろしいでしょうか？' } do
+            %i.far.fa-trash-alt.fa-lg.show-content__d-icon 
+    .show-content__start
+      開始:
+      = @event.start_date.to_s(:datetime_jp)
+    .show-content__start
+      終了:
+      = @event.end_date.to_s(:datetime_jp)
+    .show-content__description
+      詳細
+      %br/
+      = @event.content
+    #new-content.new-content
+      = render "edit"
+    
+  .messages
+    .message
+      - @messages.each do |message|
+        .message-list{data: {message: {id: message.id}}}
+          .message-list__top
+            .message-list__user-name
+              = message.user.name
+            .message-list__created_at
+              = message.created_at.to_s(:datetime_jp)
+
+          .message-list__content
+            = message.content
+          .message-list__image
+            = image_tag message.image.url,class: "message-list__img" if message.image.present?
+          
+    .message-form
+      = form_for [@group, @event, @message] do |f|
+        .form-input
+          = f.text_field :content,  class: "form-input__text-field", placeholder: 'メッセージを入力してください'
+          .message-form__menu
+            = f.label :image,class: "form-input__label" do
+              = f.file_field :image, class: "form-input__tag"
+        = f.submit "Send",class: "form-input__btn"
+
+

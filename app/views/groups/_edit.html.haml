@@ -1,0 +1,44 @@
+.group-form-edit
+  %i.back-icon.fas.fa-times.fa-lg
+  %h1 カレンダーの編集
+
+  = form_for @group do |f|
+    .group-main
+      #group-users
+        %h3 Friend List
+        - @friend.each do |user|
+          .group-user.jss-add-user
+            = image_tag user.imageicon,class: "group-user__image"
+            %p.group-user__name 
+              = user.name
+            .group-user__btn--add{"data-user-id" => user.id, "data-user-name" => user.name} 追加
+      
+      .group-form__field
+        .group-form__text
+          = f.label :name, class: 'group-form__label'
+          = f.text_field :name, class: 'group-form__input', placeholder: 'グループ名を入力してください'
+
+        .group-form__member
+          .group-form__member--list
+            %label.group-form__label 
+            メンバー
+          #group-user__list.js-add-user
+            .group-user__list
+              %input{name: "group[user_ids][]", type: "hidden", value: current_user.id}
+              %p.group-user__name 
+                = current_user.name
+
+            - @group.users.each do |user|
+              - if current_user.name != user.name
+                #group-user__list
+                  .group-user__list
+                    %input{name: "group[user_ids][]", type: "hidden", value: user.id}
+                    %p.group-user__name
+                      = user.name 
+                    %a.group-user__btn--remove
+                      削除
+        .group-form__submit
+          = f.submit class: 'group-form__action-btn'
+
+
+  

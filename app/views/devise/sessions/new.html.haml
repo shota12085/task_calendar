@@ -1,0 +1,53 @@
+#top-window.top-window
+  %ul.slider
+    %li
+      = image_tag "/assets/work.jpeg",class: "top-window__image"
+    %li
+      = image_tag "/assets/friend.jpg",class: "top-window__image"
+    %li
+      = image_tag "/assets/snow.jpg",class: "top-window__image"
+    %li
+      = image_tag "/assets/fireworks_00020.jpg",class: "top-window__image"
+  .top-main
+    .top-main__introduction
+      %h1 Task Calendarへようこそ
+      %h2 家族、仲間、友達  大切な人との共有
+    .top-main__access
+      %button.top-main__signin.inbtn
+        %p サインイン
+      %button.top-main__login.inbtn
+        %P ログイン
+    .top-main__sns
+      %button.top-main__facebook.btn
+        %i.fab.fa-facebook-square.fa-lg.icon 
+        %p facebook
+      %button.top-main__twitter.btn 
+        %i.fab.fa-twitter-square.fa-lg.icon 
+        %p twitter
+      %button.top-main__instagram.btn
+        %i.fab.fa-instagram.fa-lg.icon 
+        %p instagram
+  
+  #account-page.account-page
+    .account-page__inner-login
+      .account-page__header
+        %i.fas.fa-times.back-icon.fa-2x
+        %h2 Log in
+        %h5 登録しているユーザーでログイン
+      .user-form
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .field
+            .field-label
+              = f.label :email
+            .field-input
+              = f.email_field :email, autofocus: true
+          .field
+            .field-label
+              = f.label :password
+              %i (英数字8文字以上)
+            .field-input
+              = f.password_field :password, autocomplete: "off"
+          .actions
+            = f.submit "ログイン", class: 'btn'
+
+  = render "users/devise/registrations/new"

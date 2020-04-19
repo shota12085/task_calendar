@@ -1,0 +1,28 @@
+= form_for @group do |f|
+  .group-main
+    #group-users
+      %h3 Friend List
+      - @friend.each do |user|
+        .group-user.jss-add-user
+          = image_tag user.imageicon,class: "group-user__image"
+          %p.group-user__name 
+            = user.name
+          .group-user__btn--add{"data-user-id" => user.id, "data-user-name" => user.name} 追加
+    
+    .group-form__field
+      .group-form__text
+        = f.label :name, class: 'group-form__label'
+        = f.text_field :name, class: 'group-form__input', placeholder: 'グループ名を入力してください'
+
+      .group-form__member
+        .group-form__member--list
+          %label.group-form__label 
+          メンバー
+        #group-user__list.js-add-user
+          .group-user__list
+            %input{name: "group[user_ids][]", type: "hidden", value: current_user.id}
+            %p.group-user__name 
+              = current_user.name
+
+      .group-form__submit
+        = f.submit class: 'group-form__action-btn'

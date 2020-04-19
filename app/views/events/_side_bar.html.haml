@@ -1,0 +1,28 @@
+.side-bar
+  .side-top
+    .menu
+      .group-menu
+        %ul MENU
+      .group-home
+        = link_to user_path(current_user.id) do
+          %li マイページ
+      #group-create.group-home
+        = link_to new_group_path do
+          %li カレンダーを作成する
+      #group-edit.group-home
+        %li カレンダーを編集する
+      .group-edit__tab.group-home
+        %li カレンダーを編集する
+      #group-delete.group-home
+        = link_to group_path(@group),method: :delete,data: { confirm: 'カレンダーを削除してもよろしいでしょうか？' } do
+          %li カレンダーを削除する
+      .group-list
+        %li Calendar List
+        .group-list__open
+          - current_user.groups.each do |group|
+            .group-list__name
+              = link_to group_events_path(group) do
+                = group.name
+.navber
+  %i.member-icon.fas.fa-users.fa-2x
+  %i.side-icon.far.fa-folder-open.fa-2x

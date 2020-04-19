@@ -1,0 +1,150 @@
+.wrapper
+  #group.group
+    .group-top
+      .group-user
+        .group-menu
+          %ul MENU
+        .group-home
+          = link_to user_path(current_user) do
+            %li ホーム
+        .group-home.group-userlist
+          %li ユーザーリスト
+        .group-home.group-followlist
+          %li フォロー/フォロワー
+        .group-home
+          = link_to new_group_path do
+            %li カレンダーを作成する
+      -if user_signed_in? && current_user.id == @user.id
+        .group-list
+          %li Calendar List
+          .group-list__open
+            - @user.groups.each do |group|
+              .group-list__name
+                = link_to group_events_path(group) do
+                  = group.name
+  .user-main
+    .user-content
+      %i.fas.fa-bars.fa-lg.btn__tab
+      %i.fas.fa-bars.fa-lg.btn__tab3
+      .user-content__image
+        -if @user.image?
+          = image_tag @user.image,class: "user-content__back-image"
+        -else
+          = image_tag "/assets/pl1234.jpg",class: "user-content__back-image", alt: "背景写真"
+        -if @user.imageicon?
+          .user-content__icon
+            = image_tag @user.imageicon,class: "user-content__default-image"
+        -else
+          .user-content__icon-default
+            = image_tag "/assets/default.jpg",class: "user-content__default-image", alt: "ユーザーアイコン"
+      .user-content__menu
+        .user-content__name
+          = @user.name
+        .user-content__edits
+        -if user_signed_in? && current_user.id == @user.id
+          .user-content__edit
+            Edit profile
+        -else
+          .user-content__edit-back
+            = render "relationships/follow"
+      .user-content__friend
+        = "Friend  #{@friend.count}人"
+      .user-content__greet
+        -if @user.content?
+          = simple_format @user.content
+        -else
+          Hello World!! 
+      
+    = render "edit"
+
+    .event-tag
+      .event-tag__user
+        = @user.name + "さんの予定" 
+      .event-tag__friend
+        Friend List
+    
+    .user-show 
+      Friend List
+      - @friend.each do |user|
+        .user-show__list
+          .user-show__member
+            =link_to user_path(user),class: "user-show__name" do
+              = image_tag user.imageicon, class: "user-show__imageicon"
+              = user.name
+          .user-show__created_at
+            = user.created_at.strftime("%Y年%m月")+"からTask Calendarを利用しています"
+
+    .event-main
+      -if user_signed_in? && current_user.id == @user.id
+        - @userEvent.each do |key,event|
+          .event-list
+            %i.fas.fa-users
+            = key
+          -event.each do |event|
+            .event-list__top
+              .event-list__title
+                = link_to group_event_path(event.group_id,event),class: "event-list__title--color" do
+                  %i.fas.fa-external-link-alt
+                    = event.title
+              .event-list__start
+                = event.start_date.to_s(:datetime_jp)+"~"
+            
+      -else
+        .event-main__userless
+          %p 本ユーザーの予定は公開されていません
+    
+  .all-user
+    .user-seach
+      %h3 User Search
+      %input#user-search__input{placeholder: "検索したいユーザー名を入力してください"}
+        #user-search__result
+    
+    .all-user__content
+      .all-user__show
+        .all-user__tag--follower 
+          %p フォロワー 
+        .all-user__tag--follow
+          %p フォロー
+      
+      .all-user__follower-list
+        - @follower.each do |user|
+          .all-user__list
+            .all-user__list-member
+              =link_to user_path(user) do
+                -if user.imageicon?
+                  = image_tag user.imageicon,class: "all-user__image"
+                -else
+                  = image_tag "/assets/default.jpg",class: "all-user__image"
+              =link_to user_path(user),class: "all-user__name" do
+                = user.name
+            .all-user__follow
+              = render partial: 'relationships/follower',locals: {user: user}
+            
+      .all-user__follow-list
+        - @follow.each do |user|
+          .all-user__list
+            .all-user__list-member
+              =link_to user_path(user) do
+                -if user.imageicon?
+                  = image_tag user.imageicon,class: "all-user__image"
+                -else
+                  = image_tag "/assets/default.jpg",class: "all-user__image"
+              =link_to user_path(user),class: "all-user__name" do
+                = user.name
+            .all-user__follow
+              = render partial: 'relationships/follower',locals: {user: user}
+
+    .all-user__main
+      %h3 User List
+      - @users.each do |user|
+        .all-user__list
+          .all-user__list-member
+            =link_to user_path(user) do
+              -if user.imageicon?
+                = image_tag user.imageicon,class: "all-user__image"
+              -else
+                = image_tag "/assets/default.jpg",class: "all-user__image"
+            =link_to user_path(user),class: "all-user__name" do
+              = user.name
+          .all-user__follow
+            = render partial: 'relationships/follower',locals: {user: user}

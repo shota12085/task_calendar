@@ -1,0 +1,47 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width,initial-scale=1.0", :name => "viewport"}/
+
+    %title TaskCalendar
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all'
+    %link{ rel: "stylesheet", type: "text/css", href: "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"}
+    = javascript_include_tag 'application', media: 'all'
+    %script{ type: "text/javascript", src: "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"}
+  %body{"data-turbolinks" => "false"}
+    -if user_signed_in?
+      .header
+        .header-left
+          %i.fas.fa-fan.fa-2x
+          = link_to user_path(current_user),class: "header-left__link" do
+            %h2 Task Calendar
+          %ul.header-left__main
+            = link_to user_path(current_user),class: "header-left__link" do
+              %li.header-left__calendar
+                カレンダー
+            = link_to "#",class: "header-left__link" do
+              %li.header-left__blog
+                ブログ
+            = link_to "#",class: "header-left__link" do
+              %li.header-left__blog
+                ヘルプ
+        .header-right
+          %ul.header-right__menu
+            %li.header-right__info
+              %i.header-right__icon1.far.fa-file-alt.fa-2x
+                .header-right__info-icon1
+                  ご意見・ご要望
+            %li.header-right__info
+              %i.header-right__icon2.far.fa-bell.fa-2x
+                .header-right__info-icon2
+                  お知らせ
+            %li.header-right__info
+              = link_to destroy_user_session_path, method: :delete, class: "header-right__delete" do
+                %i.header-right__icon3.fas.fa-user-circle.fa-2x
+                .header-right__info-icon3
+                  ログアウト
+
+    = render 'layouts/notifications'
+    = yield
