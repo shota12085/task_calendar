@@ -30,7 +30,7 @@
         -if @user.image?
           = image_tag @user.image,class: "user-content__back-image"
         -else
-          = image_tag "/assets/pl1234.jpg",class: "user-content__back-image", alt: "背景写真"
+          = image_tag "/images/pl1234.jpg",class: "user-content__back-image", alt: "背景写真"
         -if @user.imageicon?
           .user-content__icon
             = image_tag @user.imageicon,class: "user-content__default-image"
