@@ -36,6 +36,23 @@ $(function(){
     `;
     $("#user-search__result").append(html);
   }
+  function addUserDef(user) {
+      let html = `
+      <div class = "all-user__list">
+        <div class = "all-user__list-member">
+          <a href = "/users/${user.id}">
+            <img src = "/images/default.jpg" class = "all-user__image">
+          </a>
+          <a href = "/users/${user.id}">
+          <div class = "all-user__name">
+            ${user.name}
+          </div>
+          </a>
+        </div>
+      </div>
+    `;
+    $("#user-search__result").append(html);
+  }
   
   function addNoUser() {
       let html = `
@@ -60,7 +77,11 @@ $(function(){
       
       if (users.length !== 0) {
         users.forEach(function(user) {
-          addUser(user);
+          if (user.image){
+            addUser(user);
+          }else{
+            addUserDef(user);
+          }
         });
       } else if (input.length == 0) {
         return false;
