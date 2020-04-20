@@ -114,7 +114,7 @@
                 -if user.imageicon?
                   = image_tag user.imageicon,class: "all-user__image"
                 -else
-                  = image_tag "/assets/default.jpg",class: "all-user__image"
+                  = image_tag "/images/default.jpg",class: "all-user__image"
               =link_to user_path(user),class: "all-user__name" do
                 = user.name
             .all-user__follow
@@ -128,7 +128,7 @@
                 -if user.imageicon?
                   = image_tag user.imageicon,class: "all-user__image"
                 -else
-                  = image_tag "/assets/default.jpg",class: "all-user__image"
+                  = image_tag "/images/default.jpg",class: "all-user__image"
               =link_to user_path(user),class: "all-user__name" do
                 = user.name
             .all-user__follow
@@ -143,7 +143,7 @@
               -if user.imageicon?
                 = image_tag user.imageicon,class: "all-user__image"
               -else
-                = image_tag "/assets/default.jpg",class: "all-user__image"
+                = image_tag "/images/default.jpg",class: "all-user__image"
             =link_to user_path(user),class: "all-user__name" do
               = user.name
           .all-user__follow
