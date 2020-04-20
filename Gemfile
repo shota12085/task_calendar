@@ -69,8 +69,8 @@ gem 'momentjs-rails'
 gem 'pry-byebug'
 gem 'carrierwave'
 gem 'mini_magick'
-# gem 'fog-aws'
-gem 'fog'
+gem 'fog-aws'
+# gem 'fog'
 
 group :production do
   gem 'unicorn', '5.4.1'
