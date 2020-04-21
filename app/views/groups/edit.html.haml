@@ -9,9 +9,15 @@
         %h3 Friend List
         - @friend.each do |user|
           .group-user.jss-add-user
-            = image_tag user.imageicon,class: "group-user__image"
-            %p.group-user__name 
-              = user.name
+            -if user.imageicon?
+              = image_tag user.imageicon,class: "group-user__image"
+              %p.group-user__name 
+                = user.name
+            -else
+              = image_tag "/images/default.jpg",class: "group-user__image", alt: "ユーザーアイコン"
+              %p.group-user__name 
+                = user.name
+              
             .group-user__btn--add{"data-user-id" => user.id, "data-user-name" => user.name} 追加
       
       .group-form__field

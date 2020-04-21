@@ -8,11 +8,19 @@
       - @group.users.each do |user|
         .member-list__show
           .member-list__image
-          =link_to user_path(user),class: "member-list__name-link" do
-            = image_tag user.imageicon,class:"member-list__image-icon"
-          .member-list__name
-          =link_to user_path(user),class: "member-list__name-link" do
-            = user.name
+          -if user.imageicon?
+            =link_to user_path(user),class: "member-list__name-link" do
+              = image_tag user.imageicon,class:"member-list__image-icon"
+            .member-list__name
+            =link_to user_path(user),class: "member-list__name-link" do
+              = user.name
+          -else 
+            =link_to user_path(user),class: "member-list__name-link" do
+              = image_tag "/images/default.jpg",class:"member-list__image-icon"
+            .member-list__name
+            =link_to user_path(user),class: "member-list__name-link" do
+              = user.name
+
       
 .time-content
   .day-time
