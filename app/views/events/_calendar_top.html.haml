@@ -3,8 +3,6 @@
   #calendar
     .new-content
       = render "form"
-    .group-edit__content
-      = render "groups/edit" 
     .member-list
       %p Member List
       - @group.users.each do |user|

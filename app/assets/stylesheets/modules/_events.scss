@@ -65,6 +65,9 @@ body {
     color: #ffffff;
     font-size: 20px;
     margin: 0;
+    @include tab {
+      font-size: 12px;
+    }
   }
   
   .header-left i{
@@ -131,6 +134,7 @@ body {
       padding: 5px;
       bottom: 0;
       right: 80px;
+      
     }
     &__info-icon2{
       display: none;
@@ -203,17 +207,7 @@ body {
       .group-home{
         margin: 10px; 
       }
-      #group-edit{
-        @include tab{
-          display: none;
-        }
-      }
-      .group-edit__tab{
-        display: none;
-        @include tab{
-          display: block;
-        }
-      }
+      
       .group-list{
         margin: 10px;
         &__name{
@@ -279,11 +273,6 @@ body {
 
 /*右画面（メイン）*/
 .calendar-top{
-  @include tab {
-    width: 65%;
-    float: left;
-    height: calc(100vh - 60px);
-  };
   width: 100vw;
   height: calc(100vh - 60px);
   position: relative;
@@ -299,6 +288,9 @@ body {
 #calendar{
   height: 100%;
   padding: 10px 20px;
+  @include tab {
+    font-size: 10px;
+  }
 }
 /*新規入力フォーム画面*/
 .new-content,.edit-content{
@@ -352,30 +344,13 @@ body {
   text-align: center;
   color: #555555;
 }
-/*グループ編集画面 挿入*/
-.group-edit__content,.group-edit__content--edit{
-  @include pc{
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  }
-  @include tab {
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  };
-  position: absolute;
-  top: 0;
-  right: 50;
-  display: none;
-  z-index: 1;
-}
 
 .time-content{
   @include tab {
-    width: 30%;
-    float: right;
-    height: calc(100vh - 40px);
+    display: none;
+  };
+  @include pc {
+    display: none;
   };
   width: 400px;
   height: calc(100vh - 60px);

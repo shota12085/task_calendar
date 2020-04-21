@@ -65,7 +65,6 @@ li {
   .group-main{
     display: flex;
     margin-top: 40px;
-    height: 400px;
     @include tab {
       height: 100%;
       display: block;

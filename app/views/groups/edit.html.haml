@@ -1,5 +1,6 @@
 .group-form-edit
-  %i.back-icon.fas.fa-times.fa-lg
+  = link_to :back do
+    %i.back-icon.fas.fa-times.fa-lg
   %h1 カレンダーの編集
 
   = form_for @group do |f|

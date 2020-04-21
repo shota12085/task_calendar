@@ -66,22 +66,6 @@ $(function(){
     $(".group-list__name").slideUp(400);     
   });
 
-  $("#group-edit").on('click', function(){
-    $(".side-bar").hide();
-    $(".group-edit__content").fadeIn(200);
-  })
-  $(".group-edit__tab").on('click', function(){
-    $(".side-bar").hide();
-    $(".calendar-top").hide();
-    $(".time-content").hide();
-    $(".group-edit__content--edit").fadeIn(200);
-  })
-
-  $(".back-icon").on('click',function(){
-    $(".group-edit__content").fadeOut(200);
-    $(".group-edit__content--edit").fadeOut(200);
-  })
-
 })
 
 

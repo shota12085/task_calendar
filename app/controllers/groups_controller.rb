@@ -6,16 +6,17 @@ class GroupsController < ApplicationController
     @group.users << current_user
     @friend = current_user.followings & current_user.followers if !current_user.nil? 
   end
-
+  
   def create
     @group = Group.create(group_params)
-    @group.save!
+    @group.save
     redirect_to group_events_path(@group), notice: 'カレンダーを作成しました'
   end
-
+  
   def edit
+    @friend = current_user.followings & current_user.followers if !current_user.nil? 
   end
-
+  
   def update
     @group.update(group_params)
     redirect_to group_events_path(@group), notice: 'カレンダーを編集しました'
