@@ -69,8 +69,12 @@
         .user-show__list
           .user-show__member
             =link_to user_path(user),class: "user-show__name" do
-              = image_tag user.imageicon, class: "user-show__imageicon"
-              = user.name
+              -if user.imageicon?
+                = image_tag user.imageicon, class: "user-show__imageicon"
+                = user.name
+              -else
+                = image_tag "/images/default.jpg",class: "user-show__imageicon"
+                = user.name
           .user-show__created_at
             = user.created_at.strftime("%Y年%m月")+"からTask Calendarを利用しています"
 
