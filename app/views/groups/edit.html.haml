@@ -8,7 +8,7 @@
       #group-users
         %h3 Friend List
         - @friend.each do |user|
-          .group-user.jss-add-user
+          .group-user{"data-user-id" => user.id, "data-user-name" => user.name, "data-user-imageicon" => user.imageicon}
             -if user.imageicon?
               = image_tag user.imageicon,class: "group-user__image"
               %p.group-user__name 
@@ -18,7 +18,7 @@
               %p.group-user__name 
                 = user.name
               
-            .group-user__btn--add{"data-user-id" => user.id, "data-user-name" => user.name} 追加
+            .group-user__btn--add{"data-user-id" => user.id, "data-user-name" => user.name, "data-user-imageicon" => user.imageicon} 追加
       
       .group-form__field
         .group-form__text
@@ -42,7 +42,7 @@
                     %input{name: "group[user_ids][]", type: "hidden", value: user.id}
                     %p.group-user__name
                       = user.name 
-                    %a.group-user__btn--remove
+                    %a.group-user__btn--remove{"data-user-id" => user.id, "data-user-name" => user.name, "data-user-imageicon" => user.imageicon}
                       削除
         .group-form__submit
           = f.submit class: 'group-form__action-btn'
