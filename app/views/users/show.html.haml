@@ -82,8 +82,9 @@
       -if user_signed_in? && current_user.id == @user.id
         - @userEvent.each do |key,event|
           .event-list
-            %i.fas.fa-users
-            = key
+            = link_to group_events_path(key.id),class: "event-list__link" do
+              %i.fas.fa-users
+              = key.name
           -event.each do |event|
             .event-list__top
               .event-list__title
@@ -98,7 +99,7 @@
           %p 本ユーザーの予定は公開されていません
     
   .all-user
-    .user-seach
+    .user-search
       %h3 User Search
       %input#user-search__input{placeholder: "検索したいユーザー名を入力してください"}
         #user-search__result

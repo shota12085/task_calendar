@@ -590,24 +590,27 @@ $sp: 480px;  // スマホ
       }
     }
     .event-tag{
-      height: 5%;
+      height: 30px;
       display: flex;
+      align-items: center;
       font-size: 16px;
-      
       &__user{
         width: 50%;
         border-bottom: 1px solid #ddd;
         border-right: 1px solid #ddd;
         text-align: center;
-        padding-top: 5px;
+        height: 30px;
+        vertical-align: top;
+        padding: 5px;
         background-color: #ddd;
         cursor: pointer;
       }
       &__friend{
         width: 50%;
+        height: 30px;
         border-bottom: 1px solid #ddd;
         text-align: center;
-        padding-top: 7px;
+        padding: 5px;
         cursor: pointer;
       }
       
@@ -618,13 +621,15 @@ $sp: 480px;  // スマホ
       overflow: scroll;
       
       .event-list{
-        // display: flex;
         font-size: 16px;
         margin: 20px 20px 0 20px;
         padding: 10px;
         border: 0.5px solid #ddd;
         background-color: #ffffff;
         box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
+        &__link{
+          text-decoration: none;
+        }
         &__top{
           display: flex;
           justify-content: space-between;
@@ -763,6 +768,10 @@ $sp: 480px;  // スマホ
       text-align: center;
     }
     /*検索機能*/
+    .user-search{
+      width: 100%;
+      text-align: center;
+    }
     #user-search__input{
       @include pc {
         width: 300px;
@@ -770,10 +779,9 @@ $sp: 480px;  // スマホ
       @include tab{
         width: 400px;
       }
-      width: 300px;
+      width: 75%;
       height: 50px;
       border-radius: 10px;
-      margin: 0 50px;
       outline: none;
       letter-spacing: 1px;
     }
