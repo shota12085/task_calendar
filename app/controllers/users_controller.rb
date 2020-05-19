@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @friend = @user.followings & @user.followers if !current_user.nil? 
     @follow = @user.followings if !current_user.nil?
     @follower = @user.followers if !current_user.nil?
-    @userEvent = @user.groups.flat_map(&:events).group_by{|event| event.group}
+    @userEvent = @user.groups.order(created_at: "DESC").flat_map(&:events).group_by{|event| event.group}
     
   end
 

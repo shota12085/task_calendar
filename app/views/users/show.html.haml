@@ -85,7 +85,7 @@
             = link_to group_events_path(key.id),class: "event-list__link" do
               %i.fas.fa-users
               = key.name
-          -event.each do |event|
+          -event.sort!.reverse!.first(3).each do |event|
             .event-list__top
               .event-list__title
                 = link_to group_event_path(event.group_id,event),class: "event-list__title--color" do
