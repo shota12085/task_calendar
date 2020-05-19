@@ -89,8 +89,8 @@
             .event-list__top
               .event-list__title
                 = link_to group_event_path(event.group_id,event),class: "event-list__title--color" do
-                  %i.fas.fa-external-link-alt
-                    = event.title
+                  %i.event-list__title--icon.fas.fa-external-link-alt
+                  = event.title
               .event-list__start
                 = event.start_date.to_s(:datetime_jp)+"~"
             
